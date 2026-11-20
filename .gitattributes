@@ -1,0 +1,7 @@
+*.pdf binary
+*.jpg binary
+*.png binary
+*.sh text eol=lf
+*.tftpl text eol=lf
+*.tf text eol=lf
+*.yml text eol=lf

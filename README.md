@@ -2,6 +2,15 @@
 
 **David Valdez Martinez | Desarrollo en la nube | 19 de noviembre de 2026**
 
+Entrega verificada: **17 pruebas**, main protegida, release **v1.0.0**, deploy por
+SSM, fallo real de RDS con alarma ALARM y recuperacion de las cinco tareas.
+Los seis workflows tienen ejecuciones exitosas. Al cerrar la validacion se
+destruyeron los recursos de la aplicacion y se conservo el backend remoto.
+
+- [Reporte PDF: dos paginas de contenido mas anexos](output/pdf/reporte-practica4-david-valdez.pdf)
+- [Evidencias y enlaces de GitHub Actions](evidence/README.md)
+- [Release v1.0.0 y artefacto ZIP](https://github.com/davidvaldezm/to-do-list-api/releases/tag/v1.0.0)
+
 API FastAPI que persiste tareas en MySQL/RDS. Terraform crea EC2, Security Groups,
 Key Pair, RDS, Secrets Manager, SNS, tres alarmas y un dashboard de CloudWatch.
 GitHub Actions prueba, provisiona, publica releases, despliega y consulta `/health`.
