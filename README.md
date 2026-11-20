@@ -111,7 +111,9 @@ terraform -chdir=terraform/bootstrap apply -var="state_bucket=$BUCKET"
 Crea `terraform/bootstrap/backend.generated.tf` con:
 
 ```hcl
-terraform { backend "s3" {} }
+terraform {
+  backend "s3" {}
+}
 ```
 
 Crea `terraform/bootstrap/backend.hcl` con los campos de
