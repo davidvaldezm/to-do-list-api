@@ -13,6 +13,29 @@ data "aws_subnets" "default" {
   }
 }
 
+data "aws_ec2_instance_type_offerings" "api" {
+  filter {
+    name   = "instance-type"
+    values = [var.ec2_instance_type]
+  }
+  location_type = "availability-zone"
+}
+
+data "aws_subnets" "api" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
+  filter {
+    name   = "default-for-az"
+    values = ["true"]
+  }
+  filter {
+    name   = "availability-zone"
+    values = data.aws_ec2_instance_type_offerings.api.locations
+  }
+}
+
 data "aws_ssm_parameter" "al2023" {
   name = "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
 }
@@ -108,7 +131,7 @@ resource "aws_secretsmanager_secret_version" "database" {
 resource "aws_instance" "api" {
   ami                         = data.aws_ssm_parameter.al2023.value
   instance_type               = var.ec2_instance_type
-  subnet_id                   = sort(data.aws_subnets.default.ids)[0]
+  subnet_id                   = sort(data.aws_subnets.api.ids)[0]
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.api.id]
   key_name                    = aws_key_pair.api.key_name
