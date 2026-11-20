@@ -1,0 +1,43 @@
+name: Destroy infrastructure
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'Escribe DESTROY: elimina EC2, RDS y las tareas. Conserva el bucket de tfstate.'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: terraform-infrastructure
+  cancel-in-progress: false
+jobs:
+  destroy:
+    if: inputs.confirmation == 'DESTROY'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TF_IN_AUTOMATION: 'true'
+      TF_VAR_notification_email: ${{ vars.NOTIFICATION_EMAIL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.17.2
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+      - name: Initialize remote state
+        env:
+          STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+        run: >-
+          terraform -chdir=terraform init -input=false
+          -backend-config="bucket=$STATE_BUCKET"
+          -backend-config="key=application/terraform.tfstate"
+          -backend-config="region=us-east-1"
+          -backend-config="encrypt=true"
+          -backend-config="use_lockfile=true"
+      - run: terraform -chdir=terraform destroy -auto-approve -input=false

@@ -1,0 +1,38 @@
+name: Release
+on:
+  push:
+    tags: ['v*.*.*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate immutable version and main ancestry
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit 1
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements-dev.txt
+      - run: pytest -v
+      - name: Package source and version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          mkdir package
+          git archive HEAD | tar -x -C package
+          printf '%s\n' "${TAG#v}" > package/VERSION
+          (cd package && zip -qr "../to-do-list-api-$TAG.zip" .)
+          sha256sum "to-do-list-api-$TAG.zip" > SHA256SUMS
+      - name: Publish release with ZIP artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: gh release create "$TAG" "to-do-list-api-$TAG.zip" SHA256SUMS --verify-tag --title "To-Do List $TAG" --generate-notes

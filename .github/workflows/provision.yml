@@ -1,0 +1,76 @@
+name: Provision infrastructure
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: terraform-infrastructure
+  cancel-in-progress: false
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TF_IN_AUTOMATION: 'true'
+      TF_VAR_notification_email: ${{ vars.NOTIFICATION_EMAIL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.17.2
+          terraform_wrapper: false
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+      - name: Bootstrap state bucket with Terraform on first run
+        env:
+          STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+        run: |
+          if aws s3api head-bucket --bucket "$STATE_BUCKET" 2>/dev/null; then
+            echo 'Remote state bucket already exists'
+          else
+            terraform -chdir=terraform/bootstrap init -input=false
+            terraform -chdir=terraform/bootstrap apply -input=false -auto-approve -var="state_bucket=$STATE_BUCKET"
+            printf 'terraform { backend "s3" {} }\n' > terraform/bootstrap/backend.generated.tf
+            terraform -chdir=terraform/bootstrap init -input=false -migrate-state -force-copy \
+              -backend-config="bucket=$STATE_BUCKET" \
+              -backend-config="key=bootstrap/terraform.tfstate" \
+              -backend-config="region=us-east-1" \
+              -backend-config="encrypt=true" \
+              -backend-config="use_lockfile=true"
+          fi
+      - name: Initialize remote state
+        env:
+          STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+        run: >-
+          terraform -chdir=terraform init -input=false
+          -backend-config="bucket=$STATE_BUCKET"
+          -backend-config="key=application/terraform.tfstate"
+          -backend-config="region=us-east-1"
+          -backend-config="encrypt=true"
+          -backend-config="use_lockfile=true"
+      - run: terraform -chdir=terraform plan -input=false -out=apply.tfplan
+      - run: terraform -chdir=terraform apply -input=false apply.tfplan
+      - name: Verify automatic bootstrap and database connectivity
+        run: |
+          url=$(terraform -chdir=terraform output -raw api_url)
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent --max-time 15 "$url/health" > health.json; then
+              python3 -c 'import json; d=json.load(open("health.json")); assert d["status"] == "ok" and d["database"] == "connected"; print(d)'
+              exit 0
+            fi
+            sleep 10
+          done
+          echo 'Application bootstrap did not become healthy' >&2
+          exit 1
+      - name: Record non-secret outputs
+        run: terraform -chdir=terraform output -json > infrastructure-outputs.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: infrastructure-outputs
+          path: |
+            infrastructure-outputs.json
+            health.json

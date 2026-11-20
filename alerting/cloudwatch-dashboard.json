@@ -1,0 +1,40 @@
+{
+  "start": "-PT1H",
+  "periodOverride": "inherit",
+  "widgets": [
+    {
+      "type": "text", "x": 0, "y": 0, "width": 24, "height": 2,
+      "properties": {"markdown": "# To-Do List | David Valdez Martinez\nDesarrollo en la nube - Practica 4. CPU de EC2, fallos reales de RDS y acumulacion de tareas. Alarmas notificadas por SNS."}
+    },
+    {
+      "type": "metric", "x": 0, "y": 2, "width": 8, "height": 7,
+      "properties": {
+        "title": "EC2 - CPU (%) | alarma >80% / 10 min", "region": "${region}",
+        "view": "timeSeries", "stat": "Average", "period": 300,
+        "metrics": [["AWS/EC2", "CPUUtilization", "InstanceId", "${instance_id}"]],
+        "yAxis": {"left": {"min": 0, "max": 100}},
+        "annotations": {"horizontal": [{"label": "CPU alta", "value": 80, "color": "#d13212"}]}
+      }
+    },
+    {
+      "type": "metric", "x": 8, "y": 2, "width": 8, "height": 7,
+      "properties": {
+        "title": "RDS - errores por minuto | alarma >=1", "region": "${region}",
+        "view": "timeSeries", "stat": "Sum", "period": 60,
+        "metrics": [["ToDoList/API", "RdsErrors", "Application", "to-do-list-api", "Environment", "learner-lab"]],
+        "yAxis": {"left": {"min": 0}},
+        "annotations": {"horizontal": [{"label": "Error RDS", "value": 1, "color": "#d13212"}]}
+      }
+    },
+    {
+      "type": "metric", "x": 16, "y": 2, "width": 8, "height": 7,
+      "properties": {
+        "title": "Tareas pendientes | alarma >10 / 10 min", "region": "${region}",
+        "view": "timeSeries", "stat": "Maximum", "period": 300,
+        "metrics": [["ToDoList/API", "PendingTasks", "Application", "to-do-list-api", "Environment", "learner-lab"]],
+        "yAxis": {"left": {"min": 0}},
+        "annotations": {"horizontal": [{"label": "Acumulacion", "value": 10, "color": "#d13212"}]}
+      }
+    }
+  ]
+}

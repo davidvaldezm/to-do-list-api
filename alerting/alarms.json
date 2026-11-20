@@ -1,0 +1,20 @@
+{
+  "cpu-high": {
+    "description": "CPU > 80% durante dos periodos de 5 min. Revisar carga y dimensionamiento de EC2.",
+    "namespace": "AWS/EC2", "metric_name": "CPUUtilization", "statistic": "Average",
+    "comparison_operator": "GreaterThanThreshold", "threshold": 80,
+    "period": 300, "evaluation_periods": 2, "datapoints_to_alarm": 2
+  },
+  "rds-errors": {
+    "description": "Al menos un error de lectura/escritura en RDS en 1 min. Revisar /health, estado RDS y Security Groups.",
+    "namespace": "ToDoList/API", "metric_name": "RdsErrors", "statistic": "Sum",
+    "comparison_operator": "GreaterThanOrEqualToThreshold", "threshold": 1,
+    "period": 60, "evaluation_periods": 1, "datapoints_to_alarm": 1
+  },
+  "pending-high": {
+    "description": "Mas de 10 tareas pendientes en dos periodos de 5 min. Revisar acumulacion y completar trabajo.",
+    "namespace": "ToDoList/API", "metric_name": "PendingTasks", "statistic": "Maximum",
+    "comparison_operator": "GreaterThanThreshold", "threshold": 10,
+    "period": 300, "evaluation_periods": 2, "datapoints_to_alarm": 2
+  }
+}

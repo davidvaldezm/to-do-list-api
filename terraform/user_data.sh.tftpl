@@ -1,0 +1,45 @@
+#!/bin/bash
+set -euxo pipefail
+exec > >(tee /var/log/todo-bootstrap.log | logger -t todo-bootstrap -s 2>/dev/console) 2>&1
+dnf install -y git python3.11 python3.11-pip
+id todo >/dev/null 2>&1 || useradd --system --home-dir /opt/to-do-list --shell /sbin/nologin todo
+install -d -o todo -g todo /opt/to-do-list/releases
+git clone --depth 1 --branch '${repository_branch}' '${repository_url}' /opt/to-do-list/releases/bootstrap
+python3.11 -m venv /opt/to-do-list/releases/bootstrap/.venv
+/opt/to-do-list/releases/bootstrap/.venv/bin/pip install --no-cache-dir -r /opt/to-do-list/releases/bootstrap/src/requirements.txt
+curl -fsSL --retry 4 https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem -o /opt/to-do-list/rds-ca.pem
+cat > /etc/to-do-list.env <<'ENV'
+AWS_REGION=${region}
+DB_SECRET_ARN=${secret_arn}
+RDS_CA_BUNDLE=/opt/to-do-list/rds-ca.pem
+CLOUDWATCH_ENABLED=true
+PYTHONUNBUFFERED=1
+ENV
+chmod 640 /etc/to-do-list.env
+chown root:todo /etc/to-do-list.env
+ln -s /opt/to-do-list/releases/bootstrap /opt/to-do-list/current
+chown -R todo:todo /opt/to-do-list
+cat > /etc/systemd/system/to-do-list.service <<'SERVICE'
+[Unit]
+Description=To-Do List FastAPI service
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+User=todo
+Group=todo
+WorkingDirectory=/opt/to-do-list/current
+EnvironmentFile=/etc/to-do-list.env
+ExecStart=/opt/to-do-list/current/.venv/bin/uvicorn src.main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+SERVICE
+systemctl daemon-reload
+systemctl enable --now amazon-ssm-agent
+systemctl enable --now to-do-list.service
