@@ -92,6 +92,11 @@ la entrega es individual. Settings > Branches muestra la configuracion.
 El bucket tambien se provisiona con Terraform, en un root separado para que
 destruir la aplicacion conserve el historial del tfstate. Usa un nombre unico:
 
+El root bootstrap usa `aws_cloudformation_stack` con un recurso S3: Learner Lab
+bloquea `GetBucketObjectLockConfiguration`, una lectura del recurso directo
+`aws_s3_bucket`. La pila sigue declarada, creada y administrada por Terraform;
+el bucket tiene `DeletionPolicy=Retain` y la pila `prevent_destroy`.
+
 **El workflow Provision infrastructure hace este bootstrap y migra su estado
 automaticamente si el bucket aun no existe.** Los comandos siguientes son la
 alternativa local y explican el procedimiento reproducible.
