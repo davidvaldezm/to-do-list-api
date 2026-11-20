@@ -7,7 +7,7 @@
       "properties": {"markdown": "# To-Do List | David Valdez Martinez\nDesarrollo en la nube - Practica 4. CPU de EC2, fallos reales de RDS y acumulacion de tareas. Alarmas notificadas por SNS."}
     },
     {
-      "type": "metric", "x": 0, "y": 2, "width": 8, "height": 7,
+      "type": "metric", "x": 0, "y": 2, "width": 24, "height": 7,
       "properties": {
         "title": "EC2 - CPU (%) | alarma >80% / 10 min", "region": "${region}",
         "view": "timeSeries", "stat": "Average", "period": 300,
@@ -17,7 +17,7 @@
       }
     },
     {
-      "type": "metric", "x": 8, "y": 2, "width": 8, "height": 7,
+      "type": "metric", "x": 0, "y": 9, "width": 24, "height": 7,
       "properties": {
         "title": "RDS - errores por minuto | alarma >=1", "region": "${region}",
         "view": "timeSeries", "stat": "Sum", "period": 60,
@@ -27,7 +27,7 @@
       }
     },
     {
-      "type": "metric", "x": 16, "y": 2, "width": 8, "height": 7,
+      "type": "metric", "x": 0, "y": 16, "width": 24, "height": 7,
       "properties": {
         "title": "Tareas pendientes | alarma >10 / 10 min", "region": "${region}",
         "view": "timeSeries", "stat": "Maximum", "period": 300,
