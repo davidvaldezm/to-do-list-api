@@ -1,0 +1,51 @@
+{
+  "phase": "deployed",
+  "timestamp_utc": "2026-11-20T02:01:52.476177+00:00",
+  "url": "http://98.81.134.173:8000",
+  "health": {
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "database": "connected",
+      "version": "1.0.0",
+      "timestamp": "2026-11-20T02:01:52.628412+00:00",
+      "pending_tasks": 5
+    }
+  },
+  "version": {
+    "status": 200,
+    "body": {
+      "version": "1.0.0"
+    }
+  },
+  "tasks": {
+    "status": 200,
+    "body": [
+      {
+        "title": "estudiar para el examen de desarrollo en la nube",
+        "done": false,
+        "id": 1
+      },
+      {
+        "title": "revisar el pipeline de CI",
+        "done": false,
+        "id": 2
+      },
+      {
+        "title": "validar la persistencia en RDS",
+        "done": false,
+        "id": 3
+      },
+      {
+        "title": "confirmar alertas de CloudWatch",
+        "done": false,
+        "id": 4
+      },
+      {
+        "title": "entregar el reporte de la practica",
+        "done": false,
+        "id": 5
+      }
+    ]
+  }
+}

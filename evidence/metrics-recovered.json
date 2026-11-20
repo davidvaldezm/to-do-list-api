@@ -1,0 +1,462 @@
+{
+  "timestamp_utc": "2026-11-20T02:21:16.436632+00:00",
+  "metrics": {
+    "CPUUtilization": [
+      {
+        "Timestamp": "2026-11-20 01:21:00+00:00",
+        "Average": 0.3767426816739011,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 01:26:00+00:00",
+        "Average": 0.39498181765917306,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 01:31:00+00:00",
+        "Average": 0.361815339534932,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 01:36:00+00:00",
+        "Average": 0.3983232709111442,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 01:41:00+00:00",
+        "Average": 0.36158078715202163,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 01:46:00+00:00",
+        "Average": 0.3966560502614013,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 01:51:00+00:00",
+        "Average": 0.36493653750096067,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 01:56:00+00:00",
+        "Average": 0.47701115806326017,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 02:01:00+00:00",
+        "Average": 0.36167691369252697,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 02:06:00+00:00",
+        "Average": 0.3882975286999905,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 02:11:00+00:00",
+        "Average": 0.3666873894484999,
+        "Unit": "Percent"
+      },
+      {
+        "Timestamp": "2026-11-20 02:16:00+00:00",
+        "Average": 0.4258019269624459,
+        "Unit": "Percent"
+      }
+    ],
+    "RdsErrors": [
+      {
+        "Timestamp": "2026-11-20 01:21:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:22:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:23:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:24:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:25:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:26:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:27:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:28:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:29:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:30:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:31:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:32:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:33:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:34:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:35:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:36:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:37:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:38:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:39:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:40:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:41:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:42:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:43:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:44:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:45:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:46:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:47:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:48:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:49:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:50:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:51:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:52:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:53:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:54:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:55:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:56:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:57:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:58:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:59:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:00:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:01:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:02:00+00:00",
+        "Sum": 3.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:03:00+00:00",
+        "Sum": 1.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:04:00+00:00",
+        "Sum": 1.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:05:00+00:00",
+        "Sum": 1.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:07:00+00:00",
+        "Sum": 1.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:08:00+00:00",
+        "Sum": 1.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:09:00+00:00",
+        "Sum": 1.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:10:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:11:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:12:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:13:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:14:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:15:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:16:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:17:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:18:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:19:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:20:00+00:00",
+        "Sum": 0.0,
+        "Unit": "Count"
+      }
+    ],
+    "PendingTasks": [
+      {
+        "Timestamp": "2026-11-20 01:21:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:26:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:31:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:36:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:41:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:46:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:51:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 01:56:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:01:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:06:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:11:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      },
+      {
+        "Timestamp": "2026-11-20 02:16:00+00:00",
+        "Maximum": 5.0,
+        "Unit": "Count"
+      }
+    ]
+  },
+  "alarms": [
+    {
+      "AlarmName": "todo-dvm-p4-cpu-high",
+      "StateValue": "OK",
+      "StateReason": "Threshold Crossed: 1 out of the last 2 datapoints [0.0130036621308168 (20/11/26 00:38:00)] was not greater than the threshold (80.0) and 1 missing datapoint was treated as [NonBreaching] (minimum 1 datapoint for ALARM -> OK transition).",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:901501251693:todo-dvm-p4-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:901501251693:todo-dvm-p4-alerts"
+      ]
+    },
+    {
+      "AlarmName": "todo-dvm-p4-pending-high",
+      "StateValue": "OK",
+      "StateReason": "Threshold Crossed: no datapoints were received for 2 periods and 2 missing datapoints were treated as [NonBreaching].",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:901501251693:todo-dvm-p4-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:901501251693:todo-dvm-p4-alerts"
+      ]
+    },
+    {
+      "AlarmName": "todo-dvm-p4-rds-errors",
+      "StateValue": "OK",
+      "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [0.0 (20/11/26 02:10:00)] was not greater than or equal to the threshold (1.0) (minimum 1 datapoint for ALARM -> OK transition).",
+      "AlarmActions": [
+        "arn:aws:sns:us-east-1:901501251693:todo-dvm-p4-alerts"
+      ],
+      "OKActions": [
+        "arn:aws:sns:us-east-1:901501251693:todo-dvm-p4-alerts"
+      ]
+    }
+  ],
+  "sns_confirmed": true
+}

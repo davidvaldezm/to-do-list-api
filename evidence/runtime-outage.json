@@ -1,0 +1,26 @@
+{
+  "phase": "outage",
+  "timestamp_utc": "2026-11-20T02:02:37.474027+00:00",
+  "url": "http://98.81.134.173:8000",
+  "health": {
+    "status": 503,
+    "body": {
+      "status": "unhealthy",
+      "database": "unavailable",
+      "version": "1.0.0",
+      "timestamp": "2026-11-20T02:02:37.620554+00:00"
+    }
+  },
+  "version": {
+    "status": 200,
+    "body": {
+      "version": "1.0.0"
+    }
+  },
+  "tasks": {
+    "status": 503,
+    "body": {
+      "detail": "Database unavailable"
+    }
+  }
+}

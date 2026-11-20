@@ -1,0 +1,10 @@
+{
+  "Subscriptions": [
+    {
+      "SubscriptionArn": "arn:aws:sns:us-east-1:901501251693:todo-dvm-p4-alerts:fa75dd54-12e6-4047-a6eb-e242adc6e0f4",
+      "TopicArn": "arn:aws:sns:us-east-1:901501251693:todo-dvm-p4-alerts",
+      "Protocol": "email",
+      "Owner": "901501251693"
+    }
+  ]
+}

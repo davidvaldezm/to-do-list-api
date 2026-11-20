@@ -1,0 +1,93 @@
+{
+  "phase": "baseline",
+  "timestamp_utc": "2026-11-20T00:45:34.557469+00:00",
+  "url": "http://98.81.134.173:8000",
+  "created": [
+    {
+      "status": 201,
+      "body": {
+        "title": "estudiar para el examen de desarrollo en la nube",
+        "done": false,
+        "id": 1
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "title": "revisar el pipeline de CI",
+        "done": false,
+        "id": 2
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "title": "validar la persistencia en RDS",
+        "done": false,
+        "id": 3
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "title": "confirmar alertas de CloudWatch",
+        "done": false,
+        "id": 4
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "title": "entregar el reporte de la practica",
+        "done": false,
+        "id": 5
+      }
+    }
+  ],
+  "health": {
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "database": "connected",
+      "version": "0.1.0",
+      "timestamp": "2026-11-20T00:45:36.795594+00:00",
+      "pending_tasks": 5
+    }
+  },
+  "version": {
+    "status": 200,
+    "body": {
+      "version": "0.1.0"
+    }
+  },
+  "tasks": {
+    "status": 200,
+    "body": [
+      {
+        "title": "estudiar para el examen de desarrollo en la nube",
+        "done": false,
+        "id": 1
+      },
+      {
+        "title": "revisar el pipeline de CI",
+        "done": false,
+        "id": 2
+      },
+      {
+        "title": "validar la persistencia en RDS",
+        "done": false,
+        "id": 3
+      },
+      {
+        "title": "confirmar alertas de CloudWatch",
+        "done": false,
+        "id": 4
+      },
+      {
+        "title": "entregar el reporte de la practica",
+        "done": false,
+        "id": 5
+      }
+    ]
+  }
+}
