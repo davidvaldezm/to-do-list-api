@@ -18,38 +18,42 @@ variable "state_bucket" {
   type = string
 }
 
-resource "aws_s3_bucket" "state" {
-  bucket = var.state_bucket
-  tags   = { Project = "todo-dvm-p4", ManagedBy = "Terraform", Purpose = "Remote terraform state" }
+resource "aws_cloudformation_stack" "state_bucket" {
+  name = "todo-dvm-p4-terraform-backend"
+  # Learner Lab denies GetBucketObjectLockConfiguration, called unconditionally
+  # by aws_s3_bucket. CloudFormation's supported S3 handler avoids that lookup.
+  template_body = jsonencode({
+    AWSTemplateFormatVersion = "2010-09-09"
+    Resources = {
+      StateBucket = {
+        Type                = "AWS::S3::Bucket"
+        DeletionPolicy      = "Retain"
+        UpdateReplacePolicy = "Retain"
+        Properties = {
+          BucketName              = var.state_bucket
+          VersioningConfiguration = { Status = "Enabled" }
+          BucketEncryption = {
+            ServerSideEncryptionConfiguration = [{ ServerSideEncryptionByDefault = { SSEAlgorithm = "AES256" } }]
+          }
+          PublicAccessBlockConfiguration = {
+            BlockPublicAcls       = true
+            BlockPublicPolicy     = true
+            IgnorePublicAcls      = true
+            RestrictPublicBuckets = true
+          }
+          Tags = [
+            { Key = "Project", Value = "todo-dvm-p4" },
+            { Key = "ManagedBy", Value = "Terraform" }
+          ]
+        }
+      }
+    }
+  })
   lifecycle {
     prevent_destroy = true
   }
 }
 
-resource "aws_s3_bucket_versioning" "state" {
-  bucket = aws_s3_bucket.state.id
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
-
-resource "aws_s3_bucket_server_side_encryption_configuration" "state" {
-  bucket = aws_s3_bucket.state.id
-  rule {
-    apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"
-    }
-  }
-}
-
-resource "aws_s3_bucket_public_access_block" "state" {
-  bucket                  = aws_s3_bucket.state.id
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
-
 output "bucket" {
-  value = aws_s3_bucket.state.id
+  value = var.state_bucket
 }
