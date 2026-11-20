@@ -81,6 +81,9 @@ No se crea un usuario IAM permanente: Learner Lab limita IAM y proporciona
 `LabInstanceProfile`. Al renovar una sesion actualiza **los tres** secrets AWS.
 Los workflows programados fallaran si caducan las credenciales o se detiene EC2.
 El cron solicita ejecucion cada cinco minutos; GitHub puede retrasarlo.
+Provision reactiva el workflow de salud tras verificar la aplicacion. Destroy
+lo desactiva despues de eliminar los recursos, para evitar alertas y ejecuciones
+fallidas sobre una infraestructura que se apago deliberadamente.
 
 Proteccion de `main`: requerir pull request y los checks `Unit tests` y
 `Terraform validation`, con la rama al dia y sin bypass de administradores.

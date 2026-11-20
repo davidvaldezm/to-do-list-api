@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: write
 concurrency:
   group: terraform-infrastructure
   cancel-in-progress: false
@@ -79,3 +80,7 @@ jobs:
           path: |
             infrastructure-outputs.json
             health.json
+      - name: Enable scheduled health checks after provisioning
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow enable health-check.yml --repo "$GITHUB_REPOSITORY"

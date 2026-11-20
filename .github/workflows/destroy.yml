@@ -8,6 +8,7 @@ on:
         type: string
 permissions:
   contents: read
+  actions: write
 concurrency:
   group: terraform-infrastructure
   cancel-in-progress: false
@@ -41,3 +42,7 @@ jobs:
           -backend-config="encrypt=true"
           -backend-config="use_lockfile=true"
       - run: terraform -chdir=terraform destroy -auto-approve -input=false
+      - name: Disable scheduled health checks after intentional teardown
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow disable health-check.yml --repo "$GITHUB_REPOSITORY"
